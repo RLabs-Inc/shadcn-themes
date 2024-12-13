@@ -1,8 +1,9 @@
 <script>
 	import Button from '$lib/components/ui/button/button.svelte';
+	import ModeButton from '$lib/components/ModeButton.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-
-<Button>Button</Button>
+<section class="flex flex-col items-center gap-2">
+	<ModeButton />
+	<Button>Test</Button>
+</section>
