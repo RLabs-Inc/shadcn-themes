@@ -4,6 +4,11 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
+
 @theme {
 	--font-display: 'Inter', ui-sans-serif, system-ui;
 
@@ -50,11 +55,11 @@
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 
-	--color-chart1: var(--chart1);
-	--color-chart2: var(--chart2);
-	--color-chart3: var(--chart3);
-	--color-chart4: var(--chart4);
-	--color-chart5: var(--chart5);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
 
 	--radius-xl: calc(var(--radius) + 4px);
 	--radius-lg: var(--radius);
@@ -82,19 +87,6 @@
 	}
 }
 
-@utility container {
-	margin-inline: auto;
-	padding-inline: 2rem;
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
 	*,
 	::after,
@@ -107,75 +99,75 @@
 
 @layer base {
 	:root {
-		--background: oklch(98% 0.05 270);
-		--foreground: oklch(10% 0.05 270);
-		--card: oklch(83% 0.05 270);
-		--card-foreground: oklch(10% 0.05 270);
-		--popover: oklch(88% 0.05 270);
-		--popover-foreground: oklch(10% 0.05 270);
-		--primary: oklch(80% 0.05 175);
-		--primary-foreground: oklch(10% 0.05 175);
-		--secondary: oklch(75% 0.1 90);
-		--secondary-foreground: oklch(10% 0.1 90);
-		--muted: oklch(96% 0.01 270);
-		--muted-foreground: oklch(40% 0.01 270);
-		--accent: oklch(80% 0.2 160);
-		--accent-foreground: oklch(10% 0.2 160);
+		--background: oklch(98% 0 0);
+		--foreground: oklch(10% 0 0);
+		--card: oklch(83% 0 0);
+		--card-foreground: oklch(10% 0 0);
+		--popover: oklch(88% 0 0);
+		--popover-foreground: oklch(10% 0 0);
+		--primary: oklch(80% 0 0);
+		--primary-foreground: oklch(10% 0 0);
+		--secondary: oklch(75% 0 0);
+		--secondary-foreground: oklch(10% 0 0);
+		--muted: oklch(96% 0 0);
+		--muted-foreground: oklch(40% 0 0);
+		--accent: oklch(80% 0 0);
+		--accent-foreground: oklch(10% 0 0);
 		--destructive: oklch(75% 0.2 27);
 		--destructive-foreground: oklch(10% 0.2 27);
-		--border: oklch(90% 0.15 270);
-		--input: oklch(90% 0.15 270);
-		--ring: oklch(80% 0.2 160);
+		--border: oklch(90% 0 0);
+		--input: oklch(90% 0 0);
+		--ring: oklch(80% 0 0);
 		--chart-1: oklch(80% 0.2 120);
 		--chart-2: oklch(80% 0.2 165);
 		--chart-3: oklch(80% 0.2 210);
 		--chart-4: oklch(80% 0.2 255);
 		--chart-5: oklch(80% 0.2 300);
 		--radius: 0.5rem;
-		--sidebar-background: oklch(98% 0.05 270);
-		--sidebar-foreground: oklch(10% 0.05 270);
-		--sidebar-primary: oklch(80% 0.05 175);
-		--sidebar-primary-foreground: oklch(10% 0.05 175);
-		--sidebar-accent: oklch(80% 0.2 160);
-		--sidebar-accent-foreground: oklch(10% 0.2 160);
-		--sidebar-border: oklch(90% 0.15 270);
-		--sidebar-ring: oklch(80% 0.2 160);
+		--sidebar-background: oklch(98% 0 0);
+		--sidebar-foreground: oklch(10% 0 0);
+		--sidebar-primary: oklch(80% 0 0);
+		--sidebar-primary-foreground: oklch(10% 0 0);
+		--sidebar-accent: oklch(80% 0 0);
+		--sidebar-accent-foreground: oklch(10% 0 0);
+		--sidebar-border: oklch(90% 0 0);
+		--sidebar-ring: oklch(80% 0 0);
 	}
 
 	.dark {
-		--background: oklch(10% 0.05 270);
-		--foreground: oklch(90% 0.05 270);
-		--card: oklch(17% 0.05 270);
-		--card-foreground: oklch(90% 0.05 270);
-		--popover: oklch(20% 0.05 270);
-		--popover-foreground: oklch(90% 0.05 270);
-		--primary: oklch(60% 0.05 175);
-		--primary-foreground: oklch(96% 0.05 175);
-		--secondary: oklch(40% 0.1 90);
-		--secondary-foreground: oklch(96% 0.1 90);
-		--muted: oklch(35% 0.01 270);
-		--muted-foreground: oklch(70% 0.01 270);
-		--accent: oklch(40% 0.2 160);
-		--accent-foreground: oklch(96% 0.2 160);
-		--destructive: oklch(40% 0.2 27);
-		--destructive-foreground: oklch(98% 0.2 27);
-		--border: oklch(40% 0.15 270);
-		--input: oklch(40% 0.15 270);
-		--ring: oklch(30% 0.2 160);
+		--background: oklch(10% 0 0);
+		--foreground: oklch(90% 0 0);
+		--card: oklch(17% 0 0);
+		--card-foreground: oklch(90% 0 0);
+		--popover: oklch(20% 0 0);
+		--popover-foreground: oklch(90% 0 0);
+		--primary: oklch(60% 0 0);
+		--primary-foreground: oklch(96% 0 0);
+		--secondary: oklch(40% 0 0);
+		--secondary-foreground: oklch(96% 0 0);
+		--muted: oklch(35% 0 0);
+		--muted-foreground: oklch(70% 0 0);
+		--accent: oklch(40% 0 0);
+		--accent-foreground: oklch(96% 0 0);
+		--destructive: oklch(40% 0.2 31);
+		--destructive-foreground: oklch(98% 0.2 31);
+		--border: oklch(40% 0 0);
+		--input: oklch(40% 0 0);
+		--ring: oklch(30% 0 0);
 		--chart-1: oklch(50% 0.2 120);
 		--chart-2: oklch(50% 0.2 165);
 		--chart-3: oklch(50% 0.2 210);
 		--chart-4: oklch(50% 0.2 255);
 		--chart-5: oklch(50% 0.2 300);
 		--radius: 0.5rem;
-		--sidebar-background: oklch(15% 0.05 270);
-		--sidebar-foreground: oklch(98% 0.05 270);
-		--sidebar-primary: oklch(25% 0.05 175);
-		--sidebar-primary-foreground: oklch(96% 0.05 175);
-		--sidebar-accent: oklch(20% 0.2 160);
-		--sidebar-accent-foreground: oklch(90% 0.2 160);
-		--sidebar-border: oklch(40% 0.15 270);
-		--sidebar-ring: oklch(30% 0.2 160);
+		--sidebar-background: oklch(15% 0 0);
+		--sidebar-foreground: oklch(98% 0 0);
+		--sidebar-primary: oklch(25% 0 0);
+		--sidebar-primary-foreground: oklch(96% 0 0);
+		--sidebar-accent: oklch(20% 0 0);
+		--sidebar-accent-foreground: oklch(90% 0 0);
+		--sidebar-border: oklch(40% 0 0);
+		--sidebar-ring: oklch(30% 0 0);
 	}
 }
 
@@ -186,4 +178,25 @@
 	body {
 		@apply bg-background text-foreground;
 	}
+}
+
+@layer base {
+	:root {
+		--bgTexture: oklch(96.3% 0 0 / 0.369);
+		--bgTexture1: oklch(89.5% 0 0 / 0.963);
+	}
+	.dark {
+		--bgTexture: oklch(25.7% 0 0 / 0.639);
+		--bgTexture1: oklch(21.5% 0 0 / 0.963);
+	}
+}
+
+.sacred-background {
+	background-color: rgb(255, 255, 255);
+	background-image: radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%),
+		radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%);
+	background-size: 15px 15px;
+	background-position:
+		0 0,
+		7.5px 7.5px;
 }
