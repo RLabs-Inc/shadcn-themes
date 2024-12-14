@@ -87,3 +87,20 @@ export type SidebarSingleVariables = {
 	'--sidebar-border': string;
 	'--sidebar-ring': string;
 };
+
+export type ThemeHues = {
+	bgHue: number;
+	fgHue: number;
+	primaryHue: number;
+	secondaryHue: number;
+	accentHue: number;
+	borderHue: number;
+	inputHue: number;
+	ringHue: number;
+	destructiveHue: number;
+	// infoHue: number;
+	// warningHue: number;
+	// successHue: number;
+
+	chartHues: number[];
+};

@@ -25,11 +25,8 @@
 
 		<div class="flex items-center gap-2">
 			<Button
-				class={clsx(
-					$page.url.pathname === '/theme-generator' ? 'underline' : '',
-					'text-foreground'
-				)}
-				href="/theme-generator"
+				class={clsx($page.url.pathname === '/generate' ? 'underline' : '', 'text-foreground')}
+				href="/generate"
 				variant="link">Create a theme</Button
 			>
 			<Button
@@ -66,11 +63,8 @@
 						>RLabs Inc.</Button
 					>
 					<Button
-						class={clsx(
-							$page.url.pathname === '/theme-generator' ? 'underline' : '',
-							'text-foreground'
-						)}
-						href="/theme-generator"
+						class={clsx($page.url.pathname === '/generate' ? 'underline' : '', 'text-foreground')}
+						href="/generate"
 						variant="link"
 						onclick={() => (open = false)}>Create a theme</Button
 					>
