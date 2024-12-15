@@ -63,6 +63,8 @@ export const getThemeState = () => {
 	function reset() {
 		baseColors = initialCSSVariables.root;
 		darkColors = initialCSSVariables.dark;
+
+		updateCSSVariables();
 	}
 	function updateCSSVariables() {
 		const controlsState = getControlsState();

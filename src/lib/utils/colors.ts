@@ -44,7 +44,7 @@ export function adjustMutedColor(
 							{ ...toOKLCH(newColor)!, l: toOKLCH(newColor)!.l + 0.0025 },
 							'oklch'
 						));
-				newColor = { ...toOKLCH(newColor)!, c: toOKLCH(newColor)!.c - 0.001 };
+				// newColor = { ...toOKLCH(newColor)!, c: toOKLCH(newColor)!.c - 0.001 };
 			} else if (contrast < minContrast) {
 				newColor = isDarkTheme
 					? (newColor = clampChroma(
@@ -55,13 +55,12 @@ export function adjustMutedColor(
 							{ ...toOKLCH(newColor)!, l: toOKLCH(newColor)!.l - 0.0025 },
 							'oklch'
 						));
-				newColor = { ...toOKLCH(newColor)!, c: toOKLCH(newColor)!.c + 0.001 };
+				// newColor = { ...toOKLCH(newColor)!, c: toOKLCH(newColor)!.c + 0.001 };
 			}
 		} else {
 			break;
 		}
 
-		newColor = clampChroma(newColor!, 'oklch');
 		iterations++;
 	}
 

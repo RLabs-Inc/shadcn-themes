@@ -2,6 +2,7 @@ import { randomInteger, randomNumber } from '$lib/utils/math';
 import { adjustMutedColor, ensureReadability, randomizeColor } from '$lib/utils/colors';
 
 import type { Theme, ThemeHues } from '$lib/types/theme';
+import { wcagLuminance } from 'culori';
 
 export function generateThemeColors(hues: ThemeHues): Theme {
 	const {
@@ -20,16 +21,16 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	const colors: Theme = {
 		root: {
 			'--background': randomizeColor([bgHue], [96, 100], [0, 10]),
-			'--foreground': randomizeColor([fgHue], [0, 50], [0, 40]),
+			'--foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
 
 			'--card': randomizeColor([bgHue], [90, 100], [0, 15]),
-			'--card-foreground': randomizeColor([fgHue], [0, 50], [0, 40]),
+			'--card-foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
 
 			'--popover': randomizeColor([bgHue], [90, 100], [0, 15]),
-			'--popover-foreground': randomizeColor([fgHue], [0, 50], [0, 40]),
+			'--popover-foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
 
 			'--muted': randomizeColor([bgHue], [80, 100], [0, 10]),
-			'--muted-foreground': randomizeColor([fgHue], [60, 100], [0, 15]),
+			'--muted-foreground': randomizeColor([bgHue], [70, 100], [0, 15]),
 
 			'--primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
@@ -73,16 +74,16 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 		},
 		dark: {
 			'--background': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--foreground': randomizeColor([fgHue], [60, 100], [0, 40]),
+			'--foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
 
 			'--card': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--card-foreground': randomizeColor([fgHue], [60, 100], [0, 40]),
+			'--card-foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
 
 			'--popover': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--popover-foreground': randomizeColor([fgHue], [60, 100], [0, 40]),
+			'--popover-foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
 
 			'--muted': randomizeColor([bgHue], [0, 30], [0, 4]),
-			'--muted-foreground': randomizeColor([fgHue], [20, 90], [0, 20]),
+			'--muted-foreground': randomizeColor([bgHue], [20, 30], [0, 20]),
 
 			'--primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
@@ -131,10 +132,10 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 
 	// Ensure minimum contrast between dome of the colors
 	base['--ring'] = ensureReadability(base['--ring'], base['--background'], 1);
-	base['--input'] = ensureReadability(base['--input'], base['--background'], 2.5);
-	base['--accent'] = ensureReadability(base['--accent'], base['--background'], 4);
-	base['--primary'] = ensureReadability(base['--primary'], base['--background'], 2.5);
-	base['--secondary'] = ensureReadability(base['--secondary'], base['--background'], 2.5);
+	base['--input'] = ensureReadability(base['--input'], base['--background'], 2);
+	base['--accent'] = ensureReadability(base['--accent'], base['--background'], 2);
+	base['--primary'] = ensureReadability(base['--primary'], base['--background'], 2);
+	base['--secondary'] = ensureReadability(base['--secondary'], base['--background'], 2);
 
 	// Ensure minimum contrast between foreground and background
 	base['--foreground'] = ensureReadability(base['--foreground'], base['--background'], 5.5);
@@ -152,11 +153,6 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	base['--secondary-foreground'] = ensureReadability(
 		base['--secondary-foreground'],
 		base['--secondary'],
-		5.5
-	);
-	base['--accent-foreground'] = ensureReadability(
-		base['--accent-foreground'],
-		base['--accent'],
 		5.5
 	);
 	base['--destructive-foreground'] = ensureReadability(
@@ -192,24 +188,42 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 		base['--muted-foreground'],
 		base['--muted'],
 		false,
-		3.5,
-		5.5
+		2.5,
+		3.5
 	);
 	base['--muted-foreground'] = adjustMutedColor(
 		base['--muted-foreground'],
 		base['--card'],
 		false,
-		3.5,
+		3.0,
 		4.5
+	);
+	base['--accent'] = adjustMutedColor(
+		base['--accent'],
+		base['--muted-foreground'],
+		wcagLuminance(base['--muted-foreground']) < 0.5,
+		2,
+		100
+	);
+	base['--accent-foreground'] = ensureReadability(
+		base['--accent-foreground'],
+		base['--accent'],
+		5.5
 	);
 
 	// Ensure minimum contrast between some colors and the background color
 	dark['--ring'] = ensureReadability(dark['--ring'], dark['--background'], 1);
-	dark['--input'] = ensureReadability(dark['--input'], dark['--background'], 2.5);
-	dark['--accent'] = ensureReadability(dark['--accent'], dark['--background'], 4);
-	dark['--primary'] = ensureReadability(dark['--primary'], dark['--background'], 2.5);
-	dark['--secondary'] = ensureReadability(dark['--secondary'], dark['--background'], 2.5);
-
+	dark['--input'] = ensureReadability(dark['--input'], dark['--background'], 2);
+	dark['--accent'] = ensureReadability(dark['--accent'], dark['--background'], 2);
+	dark['--primary'] = ensureReadability(dark['--primary'], dark['--background'], 2);
+	dark['--secondary'] = ensureReadability(dark['--secondary'], dark['--background'], 2);
+	// dark['--accent'] = adjustMutedColor(
+	// 	dark['--accent'],
+	// 	dark['--muted-foreground'],
+	// 	!(wcagLuminance(dark['--accent']) < 0.5),
+	// 	5,
+	// 	20
+	// );
 	// Ensure minimum contrast between foreground and background colors
 	dark['--foreground'] = ensureReadability(dark['--foreground'], dark['--background'], 5.5);
 
@@ -227,11 +241,6 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	dark['--secondary-foreground'] = ensureReadability(
 		dark['--secondary-foreground'],
 		dark['--secondary'],
-		5.5
-	);
-	dark['--accent-foreground'] = ensureReadability(
-		dark['--accent-foreground'],
-		dark['--accent'],
 		5.5
 	);
 	dark['--destructive-foreground'] = ensureReadability(
@@ -276,6 +285,18 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 		true,
 		3.5,
 		4.5
+	);
+	dark['--accent'] = adjustMutedColor(
+		dark['--accent'],
+		dark['--muted-foreground'],
+		wcagLuminance(dark['--muted-foreground']) < 0.5,
+		2,
+		100
+	);
+	dark['--accent-foreground'] = ensureReadability(
+		dark['--accent-foreground'],
+		dark['--accent'],
+		5.5
 	);
 
 	return {

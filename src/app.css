@@ -200,3 +200,7 @@
 		0 0,
 		7.5px 7.5px;
 }
+
+button {
+	cursor: pointer;
+}

@@ -74,4 +74,6 @@
 		>
 	</div>
 	<Separator />
+	<Button onclick={() => themeState().reset()}>Reset colors</Button>
+	<Separator />
 </section>

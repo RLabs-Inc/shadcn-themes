@@ -3,9 +3,11 @@
 	import Preview from '$lib/components/preview/Preview.svelte';
 </script>
 
-<section class="flex h-full flex-col items-center justify-center gap-2 px-5 py-20">
-	<section class="flex flex-row items-center justify-between">
+<section class="flex h-full flex-col gap-2 px-5 py-20">
+	<section class="flex w-full flex-row justify-between gap-5">
 		<Controls />
-		<Preview />
+		<div class="flex-1">
+			<Preview />
+		</div>
 	</section>
 </section>
