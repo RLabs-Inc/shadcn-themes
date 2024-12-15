@@ -4,8 +4,9 @@
 </script>
 
 <section class="flex h-full flex-col gap-2 px-5 py-20">
-	<section class="flex w-full flex-row justify-between gap-5">
+	<section class="flex w-full flex-col gap-5 lg:flex-row lg:justify-between">
 		<Controls />
+
 		<div class="flex-1">
 			<Preview />
 		</div>
