@@ -200,11 +200,19 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	);
 	base['--accent'] = adjustMutedColor(
 		base['--accent'],
+		base['--popover-foreground'],
+		wcagLuminance(base['--popover-foreground']) < 0.5,
+		4,
+		100
+	);
+	base['--accent'] = adjustMutedColor(
+		base['--accent'],
 		base['--muted-foreground'],
 		wcagLuminance(base['--muted-foreground']) < 0.5,
 		2,
 		100
 	);
+
 	base['--accent-foreground'] = ensureReadability(
 		base['--accent-foreground'],
 		base['--accent'],
@@ -288,11 +296,19 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	);
 	dark['--accent'] = adjustMutedColor(
 		dark['--accent'],
+		dark['--popover-foreground'],
+		wcagLuminance(base['--popover-foreground']) > 0.5,
+		5,
+		100
+	);
+	dark['--accent'] = adjustMutedColor(
+		dark['--accent'],
 		dark['--muted-foreground'],
 		wcagLuminance(dark['--muted-foreground']) < 0.5,
 		2,
 		100
 	);
+
 	dark['--accent-foreground'] = ensureReadability(
 		dark['--accent-foreground'],
 		dark['--accent'],

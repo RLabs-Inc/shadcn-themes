@@ -3,7 +3,6 @@
 	import { getThemeState } from '$lib/state/theme.svelte';
 
 	import { Label } from '$lib/components/ui/label';
-	import { Switch } from '$lib/components/ui/switch';
 	import { Button } from '$lib/components/ui/button';
 	import { Separator } from '$lib/components/ui/separator';
 	import { SliderPicker } from '$lib/components/ui/slider-picker';
@@ -11,8 +10,7 @@
 
 	import ThemeModeButton from '$lib/components/ThemeModeButton.svelte';
 
-	import { ColorSchemes, type ColorScheme } from '$lib/types/sacred-geometry-schemes';
-	import ThemeColorsControl from './ThemeColorsControl.svelte';
+	import { ColorSchemes } from '$lib/types/sacred-geometry-schemes';
 
 	const controlsState = getControlsState();
 	const themeState = getThemeState();
@@ -23,8 +21,8 @@
   	)`;
 </script>
 
-<section class="flex flex-col gap-2">
-	<div class="flex flex-wrap items-center gap-5 pb-1 sm:flex-row">
+<section class="flex flex-col gap-2 px-5 pt-2">
+	<div class="flex flex-wrap items-center gap-5 sm:flex-row">
 		<div class="flex min-w-[220px] flex-1 flex-col gap-4">
 			<Label for="baseHue">Base Hue: {controlsState().baseHue[0]}</Label>
 			<SliderPicker
