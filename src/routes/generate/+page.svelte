@@ -3,7 +3,6 @@
 	import ThemeColors from '$lib/components/controls/ThemeColors.svelte';
 	import Preview from '$lib/components/preview/Preview.svelte';
 	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
-	import { Scroll } from 'lucide-svelte';
 </script>
 
 <section class="flex h-full flex-col gap-2">

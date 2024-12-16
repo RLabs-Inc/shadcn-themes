@@ -147,6 +147,7 @@
 							{/if}
 						{/each}
 					</div>
+
 					<div class="flex flex-col gap-2">
 						{#each dark as color}
 							{#if color}
@@ -164,7 +165,7 @@
 					<span class="font-black">Sidebar</span>
 					<div class="flex flex-row flex-wrap gap-8">
 						<div class="flex flex-col flex-wrap gap-2">
-							{#each light as color}
+							{#each dark as color}
 								{#if color}
 									{#if Object.entries(color).length > 1 && Object.entries(color)[1][0].includes('sidebar')}
 										<ThemeColorSwatch
@@ -190,15 +191,12 @@
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div>
 				<div class="flex flex-col gap-2">
 					<span class="font-black">Charts</span>
 					<div class="flex flex-row justify-between gap-2">
 						{#each dark as color}
 							{#if color}
-								{#if Object.entries(color).length === 1 && !Object.entries(color)[0][0].includes('sidebar') && Object.entries(color)[0][0].includes('chart')}
+								{#if Object.entries(color).length === 1 && Object.entries(color)[0][0].includes('chart') && !Object.entries(color)[0][0].includes('sidebar')}
 									<ThemeColorSwatch
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
