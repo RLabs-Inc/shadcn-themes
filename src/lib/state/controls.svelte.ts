@@ -7,6 +7,11 @@ let baseHue = $state([0]);
 let scheme = $state(Object.values(ColorSchemes)[0]);
 
 export function getControlsState() {
+	function toggleThemeMode() {
+		isDarkTheme = !isDarkTheme;
+		const themeState = getThemeState();
+		themeState().updateCSSVariables();
+	}
 	function setIsDarkTheme(value: boolean) {
 		isDarkTheme = value;
 		const themeState = getThemeState();
@@ -33,6 +38,7 @@ export function getControlsState() {
 		isDarkTheme,
 		baseHue,
 		scheme,
+		toggleThemeMode,
 		setIsDarkTheme,
 		setBaseHue,
 		setScheme,
