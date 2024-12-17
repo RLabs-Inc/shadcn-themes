@@ -19,13 +19,15 @@
 	import { data, recentOrders, projects } from '$lib/constants/dashboard';
 </script>
 
-<section class="border-border rounded-md border px-2 py-4">
+<section class="border-border rounded-md px-2 py-4 lg:border">
 	<ScrollArea class="h-full">
 		<div class="flex-1 space-y-6 px-2 sm:px-4">
 			<div class="flex flex-col justify-between space-y-2 sm:flex-row sm:items-center sm:space-y-0">
 				<h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Dashboard</h2>
-				<div class="flex items-center space-x-2">
-					<DateRange />
+				<div class="flex flex-wrap items-center gap-2">
+					<div class="w-full sm:w-auto">
+						<DateRange />
+					</div>
 					<Button class="w-full sm:w-auto">
 						<Download class="mr-2 h-4 w-4" />
 						Download Report

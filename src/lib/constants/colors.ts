@@ -38,8 +38,8 @@ export const initialCSSVariables: Theme = {
 	},
 
 	dark: {
-		'--background': 'oklch(10% 0 0)',
-		'--foreground': 'oklch(90% 0 0)',
+		'--background': 'oklch(63.9% 0 0)',
+		'--foreground': 'oklch(100% 0 0)',
 		'--card': 'oklch(17% 0 0)',
 		'--card-foreground': 'oklch(90% 0 0)',
 		'--popover': 'oklch(20% 0 0)',

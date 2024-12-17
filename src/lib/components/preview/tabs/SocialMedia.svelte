@@ -120,8 +120,8 @@
 	let newPost = $state('');
 </script>
 
-<div class="flex h-full flex-col gap-4 lg:flex-row">
-	<div class="mx-auto w-full max-w-3xl flex-1 space-y-4 px-2 sm:px-4">
+<div class="flex h-full flex-col gap-4 px-2 pb-4 lg:flex-row">
+	<div class="mx-auto w-full max-w-3xl flex-1 space-y-4 sm:px-4">
 		<Card>
 			<CardContent class="pt-4">
 				<div class="flex gap-4">
@@ -153,32 +153,34 @@
 			</CardContent>
 		</Card>
 
-		<div class="no-scrollbar flex gap-4 overflow-x-auto px-1 py-2">
-			<div class="flex h-full flex-col items-center gap-2">
-				<Button variant="outline" class="aspect-square h-14 w-14 rounded-full" size="icon">
-					<Plus class="h-6 w-6" />
-				</Button>
-				<span class="text-xs">Add Story</span>
-			</div>
-
-			{#each stories as story}
-				<div class="flex flex-col items-center gap-2">
-					<Button
-						variant="outline"
-						size="icon"
-						class={`ring-primary aspect-square h-14 w-14 rounded-full ring-2`}
-					>
-						<Avatar class="h-12 w-12">
-							<AvatarImage src={story.avatar} alt={story.user} class="object-cover" />
-							<AvatarFallback>{story.user[0]}</AvatarFallback>
-						</Avatar>
+		<ScrollArea orientation="horizontal" type="scroll" class="w-[calc(100vw-1rem)]">
+			<div class="no-scrollbar flex gap-4 py-2">
+				<div class="flex h-full flex-col items-center gap-2">
+					<Button variant="outline" class="aspect-square h-14 w-14 rounded-full" size="icon">
+						<Plus class="h-6 w-6" />
 					</Button>
-					<span class="text-xs whitespace-nowrap">{story.user.split(' ')[0]}</span>
+					<span class="text-xs">Add Story</span>
 				</div>
-			{/each}
-		</div>
 
-		<ScrollArea class="h-[calc(100vh-280px)] sm:h-[calc(100vh-300px)]">
+				{#each stories as story}
+					<div class="flex flex-col items-center gap-2">
+						<Button
+							variant="outline"
+							size="icon"
+							class={`ring-primary aspect-square h-14 w-14 rounded-full ring-2`}
+						>
+							<Avatar class="h-12 w-12">
+								<AvatarImage src={story.avatar} alt={story.user} class="object-cover" />
+								<AvatarFallback>{story.user[0]}</AvatarFallback>
+							</Avatar>
+						</Button>
+						<span class="text-xs whitespace-nowrap">{story.user.split(' ')[0]}</span>
+					</div>
+				{/each}
+			</div>
+		</ScrollArea>
+
+		<ScrollArea type="scroll" class="h-[calc(100vh-280px)] sm:h-[calc(100vh-300px)]">
 			<div class="flex flex-col gap-6">
 				{#each posts as post}
 					<Card>

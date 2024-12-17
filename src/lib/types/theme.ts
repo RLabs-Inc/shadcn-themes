@@ -91,6 +91,8 @@ export type SidebarSingleVariables = {
 export type ThemeHues = {
 	bgHue: number;
 	fgHue: number;
+	cardHue: number;
+	popoverHue: number;
 	primaryHue: number;
 	secondaryHue: number;
 	accentHue: number;
@@ -103,4 +105,10 @@ export type ThemeHues = {
 	// successHue: number;
 
 	chartHues: number[];
+};
+
+export type SelectedColor = {
+	name: string;
+	color: string;
+	mode: 'light' | 'dark';
 };

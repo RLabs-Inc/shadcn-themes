@@ -135,8 +135,8 @@
 	}
 
 	.dark {
-		--background: oklch(10% 0 0);
-		--foreground: oklch(90% 0 0);
+		--background: oklch(63.9% 0 0);
+		--foreground: oklch(100% 0 0);
 		--card: oklch(17% 0 0);
 		--card-foreground: oklch(90% 0 0);
 		--popover: oklch(20% 0 0);
@@ -195,10 +195,10 @@
 	background-color: rgb(255, 255, 255);
 	background-image: radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%),
 		radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%);
-	background-size: 15px 15px;
+	background-size: 30px 30px;
 	background-position:
 		0 0,
-		7.5px 7.5px;
+		15px 15px;
 }
 
 button {

@@ -4,10 +4,12 @@ import { adjustMutedColor, ensureReadability, randomizeColor } from '$lib/utils/
 import type { Theme, ThemeHues } from '$lib/types/theme';
 import { wcagLuminance } from 'culori';
 
-export function generateThemeColors(hues: ThemeHues): Theme {
+export function generateThemeColors(hues: ThemeHues, lessColors = true): Theme {
 	const {
 		bgHue,
 		fgHue,
+		cardHue,
+		popoverHue,
 		primaryHue,
 		secondaryHue,
 		accentHue,
@@ -21,16 +23,16 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 	const colors: Theme = {
 		root: {
 			'--background': randomizeColor([bgHue], [96, 100], [0, 10]),
-			'--foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
+			'--foreground': randomizeColor([lessColors ? bgHue : fgHue], [0, 50], [0, 40]),
 
-			'--card': randomizeColor([bgHue], [90, 100], [0, 15]),
-			'--card-foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
+			'--card': randomizeColor([lessColors ? bgHue : cardHue], [90, 100], [0, 15]),
+			'--card-foreground': randomizeColor([lessColors ? bgHue : cardHue], [0, 50], [0, 40]),
 
-			'--popover': randomizeColor([bgHue], [90, 100], [0, 15]),
-			'--popover-foreground': randomizeColor([bgHue], [0, 50], [0, 40]),
+			'--popover': randomizeColor([lessColors ? bgHue : popoverHue], [90, 100], [0, 15]),
+			'--popover-foreground': randomizeColor([lessColors ? bgHue : popoverHue], [0, 50], [0, 40]),
 
 			'--muted': randomizeColor([bgHue], [80, 100], [0, 10]),
-			'--muted-foreground': randomizeColor([bgHue], [70, 100], [0, 15]),
+			'--muted-foreground': randomizeColor([lessColors ? bgHue : fgHue], [70, 100], [0, 15]),
 
 			'--primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
@@ -50,19 +52,19 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 			// '--success': randomizeColor(successHue, [20, 96], [5, 40]),
 			// '--success-foreground': randomizeColor(successHue, [0, 100], [0, 40]),
 
-			'--border': randomizeColor([borderHue], [0, 100], [0, 40]),
-			'--input': randomizeColor([inputHue], [0, 100], [0, 40]),
-			'--ring': randomizeColor([ringHue], [0, 100], [0, 40]),
+			'--border': randomizeColor([lessColors ? bgHue : borderHue], [0, 100], [0, 40]),
+			'--input': randomizeColor([lessColors ? secondaryHue : inputHue], [0, 100], [0, 40]),
+			'--ring': randomizeColor([lessColors ? primaryHue : ringHue], [0, 100], [0, 40]),
 
 			'--sidebar-background': randomizeColor([bgHue], [96, 100], [0, 15]),
-			'--sidebar-foreground': randomizeColor([fgHue], [0, 100], [0, 40]),
+			'--sidebar-foreground': randomizeColor([lessColors ? bgHue : fgHue], [0, 100], [0, 40]),
 			'--sidebar-primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--sidebar-primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--sidebar-accent': randomizeColor([accentHue], [0, 100], [0, 40]),
 			'--sidebar-accent-foreground': randomizeColor([accentHue], [0, 100], [0, 40]),
 
-			'--sidebar-border': randomizeColor([borderHue], [0, 100], [0, 40]),
-			'--sidebar-ring': randomizeColor([ringHue], [0, 100], [0, 40]),
+			'--sidebar-border': randomizeColor([lessColors ? bgHue : borderHue], [0, 100], [0, 40]),
+			'--sidebar-ring': randomizeColor([lessColors ? primaryHue : ringHue], [0, 100], [0, 40]),
 
 			'--chart-1': randomizeColor([chartHues[0]], [0, 100], [0, 40]),
 			'--chart-2': randomizeColor([chartHues[1]], [0, 100], [0, 40]),
@@ -74,16 +76,16 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 		},
 		dark: {
 			'--background': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
+			'--foreground': randomizeColor([lessColors ? bgHue : fgHue], [60, 100], [0, 40]),
 
-			'--card': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--card-foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
+			'--card': randomizeColor([lessColors ? bgHue : cardHue], [0, 35], [0, 7]),
+			'--card-foreground': randomizeColor([lessColors ? bgHue : cardHue], [60, 100], [0, 40]),
 
-			'--popover': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--popover-foreground': randomizeColor([bgHue], [60, 100], [0, 40]),
+			'--popover': randomizeColor([lessColors ? bgHue : popoverHue], [0, 35], [0, 7]),
+			'--popover-foreground': randomizeColor([lessColors ? bgHue : popoverHue], [60, 100], [0, 40]),
 
 			'--muted': randomizeColor([bgHue], [0, 30], [0, 4]),
-			'--muted-foreground': randomizeColor([bgHue], [20, 30], [0, 20]),
+			'--muted-foreground': randomizeColor([lessColors ? bgHue : fgHue], [20, 30], [0, 20]),
 
 			'--primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
@@ -103,19 +105,19 @@ export function generateThemeColors(hues: ThemeHues): Theme {
 			// '--success': randomizeColor(successHue, [15, 90], [5, 40]),
 			// '--success-foreground': randomizeColor(successHue, [0, 100], [0, 40]),
 
-			'--border': randomizeColor([borderHue], [0, 100], [0, 40]),
-			'--input': randomizeColor([inputHue], [0, 100], [0, 40]),
-			'--ring': randomizeColor([ringHue], [0, 100], [0, 40]),
+			'--border': randomizeColor([lessColors ? bgHue : borderHue], [0, 100], [0, 40]),
+			'--input': randomizeColor([lessColors ? secondaryHue : inputHue], [0, 100], [0, 40]),
+			'--ring': randomizeColor([lessColors ? primaryHue : ringHue], [0, 100], [0, 40]),
 
 			'--sidebar-background': randomizeColor([bgHue], [0, 35], [0, 7]),
-			'--sidebar-foreground': randomizeColor([fgHue], [60, 100], [0, 40]),
+			'--sidebar-foreground': randomizeColor([lessColors ? bgHue : fgHue], [60, 100], [0, 40]),
 			'--sidebar-primary': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--sidebar-primary-foreground': randomizeColor([primaryHue], [0, 100], [0, 40]),
 			'--sidebar-accent': randomizeColor([accentHue], [0, 100], [0, 40]),
 			'--sidebar-accent-foreground': randomizeColor([accentHue], [0, 100], [0, 40]),
 
-			'--sidebar-border': randomizeColor([borderHue], [0, 100], [0, 40]),
-			'--sidebar-ring': randomizeColor([ringHue], [0, 100], [0, 40]),
+			'--sidebar-border': randomizeColor([lessColors ? bgHue : borderHue], [0, 100], [0, 40]),
+			'--sidebar-ring': randomizeColor([lessColors ? primaryHue : ringHue], [0, 100], [0, 40]),
 
 			'--chart-1': randomizeColor([chartHues[0]], [0, 100], [0, 40]),
 			'--chart-2': randomizeColor([chartHues[1]], [0, 100], [0, 40]),

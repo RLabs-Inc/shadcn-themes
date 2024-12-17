@@ -6,6 +6,8 @@ let schemeHues: number[] = $state([]);
 
 let bgHue = $state(0);
 let fgHue = $state(0);
+let cardHue = $state(0);
+let popoverHue = $state(0);
 let primaryHue = $state(0);
 let secondaryHue = $state(0);
 let accentHue = $state(0);
@@ -21,6 +23,8 @@ let chartHues = $state([0, 0, 0, 0, 0]);
 const hues = $derived({
 	bgHue: bgHue,
 	fgHue: fgHue,
+	cardHue: cardHue,
+	popoverHue: popoverHue,
 	primaryHue: primaryHue,
 	secondaryHue: secondaryHue,
 	accentHue: accentHue,
@@ -44,6 +48,8 @@ export const getSchemeHuesState = () => {
 	function setHues() {
 		bgHue = schemeHues[randomInteger(0, schemeHues.length - 1)];
 		fgHue = schemeHues[randomInteger(0, schemeHues.length - 1)];
+		cardHue = schemeHues[randomInteger(0, schemeHues.length - 1)];
+		popoverHue = schemeHues[randomInteger(0, schemeHues.length - 1)];
 		primaryHue = schemeHues[0];
 		secondaryHue = schemeHues[randomInteger(0, schemeHues.length - 1)];
 		accentHue = schemeHues[randomInteger(0, schemeHues.length - 1)];

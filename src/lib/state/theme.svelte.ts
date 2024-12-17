@@ -2,7 +2,7 @@ import { getControlsState } from './controls.svelte';
 import { getSchemeHuesState } from './scheme-hues.svelte';
 import { generateThemeColors } from '$lib/utils/theme';
 import { initialCSSVariables } from '$lib/constants/colors';
-import type { CSSVariables, Theme } from '$lib/types/theme';
+import type { CSSVariables, Theme, SelectedColor } from '$lib/types/theme';
 import { type ColorScheme } from '$lib/types/sacred-geometry-schemes';
 
 let baseColors: CSSVariables = $state(initialCSSVariables.root);
@@ -12,6 +12,8 @@ const theme: Theme = $derived({
 	root: baseColors,
 	dark: darkColors
 });
+
+let selectedColor: SelectedColor | null = $state(null);
 
 export const getThemeState = () => {
 	function setBaseColors(colors: CSSVariables) {
@@ -25,12 +27,14 @@ export const getThemeState = () => {
 			...baseColors,
 			[name]: color
 		};
+		updateCSSVariables();
 	}
 	function setDarkColor(name: string, color: string) {
 		darkColors = {
 			...darkColors,
 			[name]: color
 		};
+		updateCSSVariables();
 	}
 	function setSchemeHues(baseHue: number, scheme: ColorScheme) {
 		const schemeHuesState = getSchemeHuesState();
@@ -42,7 +46,7 @@ export const getThemeState = () => {
 
 		setSchemeHues(controlsState().baseHue[0], controlsState().scheme as ColorScheme);
 
-		const colors = generateThemeColors(schemeHuesState().hues);
+		const colors = generateThemeColors(schemeHuesState().hues, controlsState().lessColors);
 
 		baseColors = colors.root;
 		darkColors = colors.dark;
@@ -52,7 +56,7 @@ export const getThemeState = () => {
 	function regenerate() {
 		const controlsState = getControlsState();
 		const schemeHuesState = getSchemeHuesState();
-		const colors = generateThemeColors(schemeHuesState().hues);
+		const colors = generateThemeColors(schemeHuesState().hues, controlsState().lessColors);
 		if (controlsState().isDarkTheme) {
 			darkColors = colors.dark;
 		} else {
@@ -64,18 +68,27 @@ export const getThemeState = () => {
 		baseColors = initialCSSVariables.root;
 		darkColors = initialCSSVariables.dark;
 
-		updateCSSVariables();
+		updateCSSVariables('reset');
 	}
-	function updateCSSVariables() {
-		const controlsState = getControlsState();
-		if (controlsState().isDarkTheme) {
-			Object.entries(darkColors).forEach(([key, value]) => {
-				document.documentElement.style.setProperty(key, value);
-			});
-		} else {
-			Object.entries(baseColors).forEach(([key, value]) => {
-				document.documentElement.style.setProperty(key, value);
-			});
+	function updateCSSVariables(mode?: string) {
+		switch (mode) {
+			case 'reset':
+				Object.keys(initialCSSVariables.root).forEach((key) => {
+					document.documentElement.style.removeProperty(key);
+				});
+				break;
+			default:
+				const controlsState = getControlsState();
+				if (controlsState().isDarkTheme) {
+					Object.entries(darkColors).forEach(([key, value]) => {
+						document.documentElement.style.setProperty(key, value);
+					});
+				} else {
+					Object.entries(baseColors).forEach(([key, value]) => {
+						document.documentElement.style.setProperty(key, value);
+					});
+				}
+				break;
 		}
 	}
 
