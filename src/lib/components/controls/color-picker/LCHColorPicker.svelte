@@ -66,9 +66,9 @@
 	});
 </script>
 
-<div class="grid grid-cols-2 place-items-center items-center gap-4">
+<div class="grid grid-cols-1 place-items-center items-center gap-4 lg:grid-cols-2">
 	<!-- Color Preview -->
-	<div class="order-3 flex h-full w-[280px] flex-col justify-between gap-2 place-self-center">
+	<div class="flex h-full w-[280px] flex-col justify-between gap-2 place-self-center lg:order-3">
 		<div class="flex flex-wrap gap-4">
 			<div class="relative h-12 w-full">
 				<div
@@ -165,7 +165,7 @@
 	</div>
 
 	<!-- Lightness Slider -->
-	<div class="order-1 flex w-[280px] flex-col gap-2">
+	<div class="flex w-[280px] flex-col gap-2 lg:order-1">
 		<div class="flex items-center justify-between">
 			<label for="lightness-slider" class="text-foreground-st text-xs"
 				>Lightness: {formatDecimal(pickerColorState().lightness[0])}%</label
@@ -185,8 +185,14 @@
 			/>
 		</div>
 
-		<TwoDMap bind:this={lcMap} type="lightness-chroma" color={pickerColor} onChange={updateColor} />
-
+		<div class="hidden lg:block">
+			<TwoDMap
+				bind:this={lcMap}
+				type="lightness-chroma"
+				color={pickerColor}
+				onChange={updateColor}
+			/>
+		</div>
 		<SliderPicker
 			value={pickerColorState().lightness}
 			onValueChange={(value) => {
@@ -209,7 +215,7 @@
 	</div>
 
 	<!-- Chroma Slider -->
-	<div class="order-2 flex w-[280px] flex-col gap-2">
+	<div class="flex w-[280px] flex-col gap-2 lg:order-2">
 		<div class="flex items-center justify-between">
 			<label for="chroma-slider" class="text-foreground-st text-xs"
 				>Chroma: {formatDecimal(pickerColorState().chroma[0])}</label
@@ -229,7 +235,7 @@
 			/>
 		</div>
 
-		<div class="">
+		<div class="hidden lg:block">
 			<TwoDMap bind:this={hcMap} type="hue-chroma" color={pickerColor} onChange={updateColor} />
 		</div>
 
@@ -255,7 +261,7 @@
 	</div>
 
 	<!-- Hue Slider -->
-	<div class="order-4 flex w-[280px] flex-col gap-2">
+	<div class="flex w-[280px] flex-col gap-2 lg:order-4">
 		<div class="flex items-center justify-between">
 			<label for="hue-slider" class="text-foreground-st text-xs"
 				>Hue: {formatDecimal(pickerColorState().hue[0])}°</label
@@ -274,9 +280,9 @@
 				}}
 			/>
 		</div>
-
-		<TwoDMap bind:this={hlMap} type="hue-lightness" color={pickerColor} onChange={updateColor} />
-
+		<div class="hidden lg:block">
+			<TwoDMap bind:this={hlMap} type="hue-lightness" color={pickerColor} onChange={updateColor} />
+		</div>
 		<SliderPicker
 			value={pickerColorState().hue}
 			onValueChange={(value) => {
