@@ -57,7 +57,7 @@
 					}}
 				>
 					<SelectTrigger
-						class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-full max-w-[120px]"
+						class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-full max-w-[120px] lg:max-w-[200px]"
 					>
 						<div class="text-elipsis truncate overflow-hidden">
 							{controlsState().scheme}

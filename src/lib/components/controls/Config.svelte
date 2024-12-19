@@ -38,7 +38,7 @@
 
 <Popover open={isOpen} onOpenChange={handlePopover}>
 	<PopoverTrigger>
-		<Button variant="outline" size="icon"><Download class="h-4 w-4" /></Button>
+		<Button variant="outline" size="icon" class="gap-2"><Download class="h-4 w-4" /></Button>
 	</PopoverTrigger>
 	<PopoverContent class="w-120">
 		<div class="flex flex-col gap-4 p-2">
