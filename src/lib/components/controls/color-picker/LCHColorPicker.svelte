@@ -64,24 +64,31 @@
 		]);
 		updateMaps(); // Initial map update
 	});
+	$inspect(selectedColorState().selectedColor);
 </script>
 
-<div
-	class="lg:gap=4 grid grid-cols-1 place-items-center items-center gap-4 md:w-full md:grid-cols-2 md:gap-10 lg:grid-cols-1"
->
+<div class="grid grid-cols-2 place-items-center items-center gap-4">
 	<!-- Color Preview -->
-	<div
-		class="order-1 flex h-full w-[280px] flex-col justify-between gap-2 place-self-center md:order-3 lg:order-1"
-	>
+	<div class="order-3 flex h-full w-[280px] flex-col justify-between gap-2 place-self-center">
 		<div class="flex flex-wrap gap-4">
 			<div class="relative h-12 w-full">
 				<div
 					class="pattern-isometric pattern-bg-white pattern-gray-500 pattern-opacity-20 pattern-size-2 absolute inset-0 overflow-hidden rounded"
+					style="background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+					linear-gradient(135deg, #ccc 25%, transparent 25%),
+					linear-gradient(45deg, transparent 75%, #ccc 75%),
+					linear-gradient(135deg, transparent 75%, #ccc 75%);
+				background-size: 5px 5px;
+				background-position:
+					0 0,
+					2.5px 0,
+					2.5px -2.5px,
+					0px 2.5px;"
 				></div>
 				<div
 					class={clsx(
-						'border-primary-foreground absolute inset-0 w-full rounded border transition-colors duration-100',
-						!isLCH_within_sRGB(pickerColor) && 'border-destructive border-2'
+						'border-primary-foreground-st absolute inset-0 w-full rounded border transition-colors duration-100',
+						!isLCH_within_sRGB(pickerColor) && 'border-destructive-st border-2'
 					)}
 					style={`background: ${formatCss(pickerColor)}`}
 				>
@@ -93,7 +100,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="flex w-full flex-col justify-center gap-1 text-sm">
+			<div class=" flex w-full flex-col justify-center gap-1 text-sm">
 				<div class="flex items-center justify-between">
 					<div class="font-mono uppercase">
 						{formatCss(pickerColor)}
@@ -101,13 +108,13 @@
 					{#if !isLCH_within_sRGB(pickerColor)}
 						<span
 							transition:fade={{ duration: 100 }}
-							class="bg-destructive text-destructive-foreground rounded px-1 text-xs"
+							class="bg-destructive-st text-destructive-foreground-st rounded px-1 text-xs"
 							>Color is out of gamut</span
 						>
 					{/if}
 				</div>
 				<div class="flex items-center gap-2">
-					<span class="text-muted-foreground text-xs">LCH:</span>
+					<span class="text-muted-foreground-st text-xs">LCH:</span>
 					<span class="font-mono">
 						{pickerColorState().lightness}%,
 						{pickerColorState().chroma},
@@ -122,11 +129,11 @@
 		<!-- Alpha Slider -->
 		<div class="flex w-[280px] flex-col gap-2">
 			<div class="flex items-center justify-between">
-				<label for="alpha-slider" class="text-xs"
+				<label for="alpha-slider" class="text-foreground-st text-xs"
 					>Alpha: {formatDecimal(pickerColorState().alpha[0])}%</label
 				>
 				<Input
-					class="w-20"
+					class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-border-st w-20"
 					type="number"
 					min={0}
 					max={100}
@@ -154,20 +161,20 @@
 				bgColor={bgAlpha}
 				controlledValue={true}
 				alpha={true}
-				class="w-[280px]"
+				class="border-border-st w-[280px]"
 				{bgThumb}
 			/>
 		</div>
 	</div>
 
 	<!-- Lightness Slider -->
-	<div class="order-2 flex w-[280px] flex-col gap-2 md:order-1 lg:order-2">
+	<div class="order-1 flex w-[280px] flex-col gap-2">
 		<div class="flex items-center justify-between">
-			<label for="lightness-slider" class="text-xs"
+			<label for="lightness-slider" class="text-foreground-st text-xs"
 				>Lightness: {formatDecimal(pickerColorState().lightness[0])}%</label
 			>
 			<Input
-				class="w-20"
+				class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-border-st w-20"
 				type="number"
 				min={0}
 				max={100}
@@ -199,19 +206,19 @@
 			bgColor={bgLightness}
 			controlledValue={true}
 			alpha={false}
-			class="w-[280px]"
+			class="border-border-st w-[280px]"
 			{bgThumb}
 		/>
 	</div>
 
 	<!-- Chroma Slider -->
-	<div class="order-3 flex w-[280px] flex-col gap-2 md:order-2 lg:order-3">
+	<div class="order-2 flex w-[280px] flex-col gap-2">
 		<div class="flex items-center justify-between">
-			<label for="chroma-slider" class="text-xs"
+			<label for="chroma-slider" class="text-foreground-st text-xs"
 				>Chroma: {formatDecimal(pickerColorState().chroma[0])}</label
 			>
 			<Input
-				class="w-20"
+				class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-border-st w-20"
 				type="number"
 				min={0}
 				max={0.4}
@@ -245,7 +252,7 @@
 			bgColor={bgChroma}
 			controlledValue={true}
 			alpha={false}
-			class="w-[280px]"
+			class="border-border-st w-[280px]"
 			{bgThumb}
 		/>
 	</div>
@@ -253,11 +260,11 @@
 	<!-- Hue Slider -->
 	<div class="order-4 flex w-[280px] flex-col gap-2">
 		<div class="flex items-center justify-between">
-			<label for="hue-slider" class="text-xs"
+			<label for="hue-slider" class="text-foreground-st text-xs"
 				>Hue: {formatDecimal(pickerColorState().hue[0])}°</label
 			>
 			<Input
-				class="w-20"
+				class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-20"
 				type="number"
 				min={0}
 				max={360}
@@ -289,7 +296,7 @@
 			bgColor={bgHue}
 			controlledValue={true}
 			alpha={false}
-			class="w-[280px]"
+			class="border-border-st w-[280px]"
 			{bgThumb}
 		/>
 	</div>

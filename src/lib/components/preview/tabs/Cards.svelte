@@ -15,12 +15,14 @@
 <div class="flex flex-wrap gap-5 px-1 pb-4">
 	<div class="flex max-w-[400px] flex-col gap-5">
 		<CardsCreateAccount />
-		<CardsChat />
+		<div class="hidden md:block">
+			<CardsChat />
+		</div>
 		<CardsPaymentMethod />
 	</div>
-	<div class="flex flex-col gap-5">
+	<div class="hidden flex-col gap-5 md:flex">
 		<CardsTeamMembers />
-		<!-- <CardsShare /> -->
+		<CardsShare />
 		<CardsNotifications />
 	</div>
 	<div class="flex max-w-[400px] flex-col gap-5">

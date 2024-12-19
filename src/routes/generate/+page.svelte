@@ -1,39 +1,33 @@
 <script lang="ts">
-	import ScrollArea from '$lib/components/ui/scroll-area/scroll-area.svelte';
-	import ColorPicker from '$lib/components/controls/ColorPicker.svelte';
+	import ScrollAreaSt from '$lib/components/ui/scroll-area-st/scroll-area.svelte';
 	import Controls from '$lib/components/controls/Controls.svelte';
 	import ThemeColors from '$lib/components/controls/ThemeColors.svelte';
 	import Preview from '$lib/components/preview/Preview.svelte';
-
-	import { getThemeState } from '$lib/state/theme.svelte';
-	import { onDestroy } from 'svelte';
-
-	onDestroy(() => {
-		const themeState = getThemeState();
-		themeState().reset();
-	});
 </script>
 
-<section class="flex h-full flex-col gap-2">
-	<div class="bg-background/40 sticky top-14 z-50 backdrop-blur-xl">
+<section class="sacred-background-small flex h-[calc(100vh)] flex-col gap-2">
+	<div class=" sticky top-[57px] z-50 backdrop-blur-xl">
 		<Controls />
-	</div>
-	<div class="border-border w-full border-b pt-15 lg:hidden">
-		<ScrollArea orientation="horizontal" class="w-[calc(100vw)]">
-			<ThemeColors />
-		</ScrollArea>
+		<div class="border-border-st w-full border-b backdrop-blur-md lg:hidden">
+			<ScrollAreaSt orientation="horizontal" class="w-[calc(100vw)]">
+				<ThemeColors />
+			</ScrollAreaSt>
+		</div>
 	</div>
 
-	<section class="flex flex-1 gap-2 lg:px-5 lg:pt-15">
-		<div class="flex w-full gap-5">
-			<div class="border-border hidden max-w-75 border-r lg:block">
-				<ScrollArea orientation="vertical" class="h-[calc(100vh-12rem)]">
+	<section class="flex flex-1 gap-2 lg:px-0 lg:pt-12">
+		<div class="flex w-full">
+			<div
+				class="border-border-st hidden max-w-75 min-w-65 border-r backdrop-blur-md lg:block lg:pl-2"
+			>
+				<ScrollAreaSt orientation="vertical" class="h-[calc(100vh-11rem)]">
 					<ThemeColors />
-					<!-- <ColorPicker /> -->
-				</ScrollArea>
+				</ScrollAreaSt>
 			</div>
-			<div class="w-full">
-				<Preview />
+			<div class="w-full p-5 pt-18 md:pt-15 lg:pt-5">
+				<div class="bg-background w-full rounded-md pt-5 md:px-5 lg:h-[calc(100vh-13.5rem)]">
+					<Preview />
+				</div>
 			</div>
 		</div>
 	</section>

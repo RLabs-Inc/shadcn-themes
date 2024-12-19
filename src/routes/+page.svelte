@@ -1,5 +1,12 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { getThemeState } from '$lib/state/theme.svelte';
 	import ModeButton from '$lib/components/ModeButton.svelte';
+
+	onMount(() => {
+		const themeState = getThemeState();
+		themeState().reset();
+	});
 </script>
 
 <svelte:head>

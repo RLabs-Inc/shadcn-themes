@@ -62,7 +62,7 @@ export const getBgLightness = (color: Oklch) => {
 		color.l,
 		color.c,
 		color.h || 0,
-		color.alpha || 100,
+		100,
 		0
 	)})`;
 };
@@ -73,7 +73,7 @@ export const getBgChroma = (color: Oklch) => {
 		color.l,
 		color.c,
 		color.h || 0,
-		color.alpha || 100,
+		100,
 		1
 	)})`;
 };
@@ -84,7 +84,7 @@ export const getBgHue = (color: Oklch) => {
 		color.l,
 		color.c,
 		color.h || 0,
-		color.alpha || 100,
+		100,
 		2
 	)})`;
 };

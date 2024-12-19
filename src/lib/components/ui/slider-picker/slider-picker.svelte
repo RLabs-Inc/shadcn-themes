@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Slider as SliderPrimitive, type WithoutChildrenOrChild } from 'bits-ui';
 	import { cn } from '$lib/utils';
+	import clsx from 'clsx';
 
 	let {
 		ref = $bindable(null),
@@ -22,25 +23,42 @@
 	{...restProps}
 >
 	{#snippet children({ thumbs })}
-		<!-- {#if alpha} -->
-		<!-- <span class="checkerboard absolute inset-0 overflow-hidden rounded-full"></span> -->
-		<div
-			class="bg-muted absolute inset-0 overflow-hidden
-  rounded"
-		></div>
 		{#if alpha}
-			<!-- <div
-        class="pattern-isometric absolute inset-0 overflow-hidden rounded
-  pattern-bg-white pattern-gray-500 pattern-opacity-20 pattern-size-1"
-      ></div> -->
-		{:else}{/if}
-
-		<!-- {/if} -->
+			<span class="checkerboard absolute inset-0 overflow-hidden rounded-full"></span>
+			<div
+				class=" absolute inset-0 overflow-hidden
+  rounded"
+				style="background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+					linear-gradient(135deg, #ccc 25%, transparent 25%),
+					linear-gradient(45deg, transparent 75%, #ccc 75%),
+					linear-gradient(135deg, transparent 75%, #ccc 75%);
+				background-size: 5px 5px;
+				background-position:
+					0 0,
+					2.5px 0,
+					2.5px -2.5px,
+					0px 2.5px;"
+			></div>
+		{/if}
+		<style>
+			checkerboard {
+				background-image: linear-gradient(45deg, #ccc 25%, transparent 25%),
+					linear-gradient(135deg, #ccc 25%, transparent 25%),
+					linear-gradient(45deg, transparent 75%, #ccc 75%),
+					linear-gradient(135deg, transparent 75%, #ccc 75%);
+				background-size: 25px 25px; /* Must be a square */
+				background-position:
+					0 0,
+					12.5px 0,
+					12.5px -12.5px,
+					0px 12.5px; /* Must be half of one side of the square */
+			}
+		</style>
 		<span
 			class="border-border dark:border-primary-foreground relative h-5 w-full grow overflow-hidden rounded border"
 			style:background={bgColor}
 		>
-			<SliderPrimitive.Range class="absolute h-full" />
+			<SliderPrimitive.Range class={clsx('absolute h-full', bgColor ? 'bg-transparent' : '')} />
 		</span>
 
 		{#each thumbs as thumb}
@@ -56,6 +74,3 @@
 		{/each}
 	{/snippet}
 </SliderPrimitive.Root>
-
-<style>
-</style>

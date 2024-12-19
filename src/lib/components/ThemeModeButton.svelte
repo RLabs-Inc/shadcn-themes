@@ -5,15 +5,24 @@
 	import Moon from 'lucide-svelte/icons/moon';
 
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { toggleMode } from 'mode-watcher';
 
 	const controlsState = getControlsState();
 </script>
 
-<Button onclick={controlsState().toggleThemeMode} variant="outline" size="icon">
+<Button
+	onclick={() => {
+		toggleMode();
+		controlsState().toggleThemeMode();
+	}}
+	class="text-primary-foreground-st border-border-st hover:bg-primary-st bg-transparent"
+	variant="outline"
+	size="icon"
+>
 	{#if controlsState().isDarkTheme}
-		<Sun class="h-[1.2rem] w-[1.2rem]" />
+		<Sun class="text-primary-foreground-st h-[1.2rem] w-[1.2rem]" />
 	{:else}
-		<Moon class="h-[1.2rem] w-[1.2rem]" />
+		<Moon class="text-primary-foreground-st h-[1.2rem] w-[1.2rem]" />
 	{/if}
 	<span class="sr-only">Toggle theme</span>
 </Button>

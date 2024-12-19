@@ -24,10 +24,12 @@
   	)`;
 </script>
 
-<section class="flex flex-col gap-2 px-5 pt-2">
+<section class="text-foreground-st bg-muted-st flex flex-col gap-2 px-5 pt-2">
 	<div class="flex flex-wrap items-center gap-5 sm:flex-row">
 		<div class="flex min-w-[300px] flex-1 flex-col gap-4">
-			<Label for="baseHue">Base Hue: {controlsState().baseHue[0]}</Label>
+			<Label class="text-primary-foreground-st" for="baseHue"
+				>Base Hue: {controlsState().baseHue[0]}</Label
+			>
 			<SliderPicker
 				value={controlsState().baseHue}
 				min={0}
@@ -39,11 +41,12 @@
 					themeState().generate();
 				}}
 				bgColor={baseHueGradient}
+				class="border-primary-st"
 			/>
 		</div>
 		<div class="flex flex-row flex-wrap gap-5">
 			<div class="flex flex-col gap-1">
-				<Label for="scheme">Color Scheme</Label>
+				<Label class="text-primary-foreground-st" for="scheme">Color Scheme</Label>
 				<Select
 					type="single"
 					value={controlsState().scheme}
@@ -52,32 +55,45 @@
 						themeState().generate();
 					}}
 				>
-					<SelectTrigger class="w-full min-w-[150px]">{controlsState().scheme}</SelectTrigger>
-					<SelectContent>
+					<SelectTrigger
+						class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-full min-w-[150px]"
+						>{controlsState().scheme}</SelectTrigger
+					>
+					<SelectContent class="bg-popover-st border-border-st text-popover-foreground-st">
 						{#each Object.values(ColorSchemes) as colorScheme}
-							<SelectItem value={colorScheme}>{colorScheme}</SelectItem>
+							<SelectItem
+								class="data-highlighted:bg-accent-st data-highlighted:text-accent-foreground-st  capitalize"
+								value={colorScheme}>{colorScheme}</SelectItem
+							>
 						{/each}
 					</SelectContent>
 				</Select>
 			</div>
 			<div class="flex flex-col gap-4">
-				<Label for="lessColors">Less colors?</Label>
+				<Label class="text-primary-foreground-st" for="lessColors">Less colors?</Label>
 				<Switch
 					checked={controlsState().lessColors}
 					onCheckedChange={(checked) => {
 						controlsState().setLessColors(checked);
 					}}
+					class="text-primary-foreground-st bg-primary-st data-[state=checked]:bg-primary-st data-[state=unchecked]:bg-input-st"
+					classNameThumb="bg-background-st"
 				/>
 			</div>
 			<div class="self-end">
 				<ThemeModeButton />
 			</div>
 		</div>
-		<div class="flex w-full flex-wrap gap-2 self-end md:w-fit">
-			<Button class="w-full md:w-fit" onclick={() => themeState().regenerate()}
+		<div class="flex w-full gap-2 self-end md:w-fit">
+			<Button
+				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st  w-full md:w-fit"
+				onclick={() => themeState().regenerate()}
 				>Regenerate {controlsState().isDarkTheme ? 'dark' : 'light'} colors</Button
 			>
-			<Button class="w-full md:w-fit" onclick={() => controlsState().randomize()}>Randomize</Button>
+			<Button
+				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st w-full md:w-fit"
+				onclick={() => controlsState().randomize()}>Randomize</Button
+			>
 		</div>
 	</div>
 	<!-- <p class="text-muted-foreground text-xs leading-tight">
@@ -85,5 +101,5 @@
 			using the same options.
 		</p> -->
 
-	<Separator />
+	<Separator class="bg-border-st" />
 </section>

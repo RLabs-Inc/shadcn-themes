@@ -2,6 +2,7 @@
 	import { getThemeState } from '$lib/state/theme.svelte';
 	import { getControlsState } from '$lib/state/controls.svelte';
 	import ThemeColorSwatch from './ThemeColorSwatch.svelte';
+	import ThemeColor from './ThemeColor.svelte';
 
 	const themeState = getThemeState();
 	const controlsState = getControlsState();
@@ -60,7 +61,7 @@
 						{#each light as color}
 							{#if color}
 								{#if Object.entries(color).length > 1 && !Object.entries(color)[1][0].includes('info') && !Object.entries(color)[1][0].includes('warning') && !Object.entries(color)[1][0].includes('success') && !Object.entries(color)[1][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 										foreground={Object.entries(color)[1][1]}
@@ -74,7 +75,7 @@
 						{#each light as color}
 							{#if color}
 								{#if Object.entries(color).length === 1 && !Object.entries(color)[0][0].includes('chart') && !Object.entries(color)[0][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 									/>
@@ -90,7 +91,7 @@
 							{#each light as color}
 								{#if color}
 									{#if Object.entries(color).length > 1 && Object.entries(color)[1][0].includes('sidebar')}
-										<ThemeColorSwatch
+										<ThemeColor
 											name={Object.entries(color)[0][0]}
 											color={Object.entries(color)[0][1]}
 											foreground={Object.entries(color)[1][1]}
@@ -103,7 +104,7 @@
 							{#each light as color}
 								{#if color}
 									{#if Object.entries(color).length === 1 && !Object.entries(color)[0][0].includes('chart') && Object.entries(color)[0][0].includes('sidebar')}
-										<ThemeColorSwatch
+										<ThemeColor
 											name={Object.entries(color)[0][0]}
 											color={Object.entries(color)[0][1]}
 										/>
@@ -119,7 +120,7 @@
 						{#each light as color}
 							{#if color}
 								{#if Object.entries(color).length === 1 && Object.entries(color)[0][0].includes('chart') && !Object.entries(color)[0][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 									/>
@@ -138,7 +139,7 @@
 						{#each dark as color}
 							{#if color}
 								{#if Object.entries(color).length > 1 && !Object.entries(color)[1][0].includes('info') && !Object.entries(color)[1][0].includes('warning') && !Object.entries(color)[1][0].includes('success') && !Object.entries(color)[1][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 										foreground={Object.entries(color)[1][1]}
@@ -152,7 +153,7 @@
 						{#each dark as color}
 							{#if color}
 								{#if Object.entries(color).length === 1 && !Object.entries(color)[0][0].includes('chart') && !Object.entries(color)[0][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 									/>
@@ -168,7 +169,7 @@
 							{#each dark as color}
 								{#if color}
 									{#if Object.entries(color).length > 1 && Object.entries(color)[1][0].includes('sidebar')}
-										<ThemeColorSwatch
+										<ThemeColor
 											name={Object.entries(color)[0][0]}
 											color={Object.entries(color)[0][1]}
 											foreground={Object.entries(color)[1][1]}
@@ -181,7 +182,7 @@
 							{#each dark as color}
 								{#if color}
 									{#if Object.entries(color).length === 1 && !Object.entries(color)[0][0].includes('chart') && Object.entries(color)[0][0].includes('sidebar')}
-										<ThemeColorSwatch
+										<ThemeColor
 											name={Object.entries(color)[0][0]}
 											color={Object.entries(color)[0][1]}
 										/>
@@ -197,7 +198,7 @@
 						{#each dark as color}
 							{#if color}
 								{#if Object.entries(color).length === 1 && Object.entries(color)[0][0].includes('chart') && !Object.entries(color)[0][0].includes('sidebar')}
-									<ThemeColorSwatch
+									<ThemeColor
 										name={Object.entries(color)[0][0]}
 										color={Object.entries(color)[0][1]}
 									/>

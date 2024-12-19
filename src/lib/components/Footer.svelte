@@ -3,12 +3,12 @@
 </script>
 
 <footer
-	class="bg-background/40 fixed right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center backdrop-blur-lg"
+	class="bg-background-st/40 text-foreground-st fixed right-0 bottom-0 left-0 z-50 flex flex-col items-center justify-center backdrop-blur-lg"
 >
 	<div class="-mt-[0.65rem] flex w-full items-center justify-center gap-1">
-		<div class="border-border w-full border-t"></div>
+		<div class="border-border-st w-full border-t"></div>
 		<img src="/images/RLabs-Lamp.png" alt="RLabs" class="w-4" />
-		<div class="border-border w-full border-t"></div>
+		<div class="border-border-st w-full border-t"></div>
 	</div>
 	<div class="-mt-[0.5rem] flex w-full items-center justify-between gap-1 px-7 py-0 md:justify-end">
 		<!-- <div class="h-4 w-4"></div> -->

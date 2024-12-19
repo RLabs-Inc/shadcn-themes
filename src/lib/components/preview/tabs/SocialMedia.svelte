@@ -120,7 +120,7 @@
 	let newPost = $state('');
 </script>
 
-<div class="flex h-full flex-col gap-4 px-2 pb-4 lg:flex-row">
+<div class="flex h-full flex-col gap-4 pb-4 lg:flex-row">
 	<div class="mx-auto w-full max-w-3xl flex-1 space-y-4 sm:px-4">
 		<Card>
 			<CardContent class="pt-4">
@@ -153,7 +153,7 @@
 			</CardContent>
 		</Card>
 
-		<ScrollArea orientation="horizontal" type="scroll" class="w-[calc(100vw-1rem)]">
+		<ScrollArea orientation="horizontal" type="scroll" class="w-[calc(100vw-4rem)]">
 			<div class="no-scrollbar flex gap-4 py-2">
 				<div class="flex h-full flex-col items-center gap-2">
 					<Button variant="outline" class="aspect-square h-14 w-14 rounded-full" size="icon">
@@ -231,7 +231,7 @@
 						</CardContent>
 						<CardFooter class="flex flex-col pt-0">
 							<div class="flex w-full items-center justify-between">
-								<div class="flex gap-4">
+								<div class="flex gap-1">
 									<Button variant="ghost" size="sm" class="gap-2">
 										<Heart class={`h-4 w-4 ${post.isLiked ? 'fill-red-500 text-red-500' : ''}`} />
 										{post.likes}
@@ -269,7 +269,7 @@
 		</ScrollArea>
 	</div>
 
-	<div class="hidden w-80 shrink-0 space-y-4 lg:block">
+	<div class="hidden w-80 shrink-0 space-y-4 2xl:block">
 		<Card>
 			<CardHeader>
 				<CardTitle>Trending Topics</CardTitle>

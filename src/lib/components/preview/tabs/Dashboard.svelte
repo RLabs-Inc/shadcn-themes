@@ -19,7 +19,7 @@
 	import { data, recentOrders, projects } from '$lib/constants/dashboard';
 </script>
 
-<section class="border-border rounded-md px-2 py-4 lg:border">
+<section class="border-border rounded-md pb-4 lg:border lg:py-4">
 	<ScrollArea class="h-full">
 		<div class="flex-1 space-y-6 px-2 sm:px-4">
 			<div class="flex flex-col justify-between space-y-2 sm:flex-row sm:items-center sm:space-y-0">

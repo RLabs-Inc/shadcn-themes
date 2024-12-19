@@ -46,6 +46,34 @@
 	--color-input: var(--input);
 	--color-ring: var(--ring);
 
+	--color-background-st: var(--background-st);
+	--color-foreground-st: var(--foreground-st);
+	--color-muted-st: var(--muted-st);
+	--color-muted-foreground-st: var(--muted-foreground-st);
+	--color-primary-st: var(--primary-st);
+	--color-primary-foreground-st: var(--primary-foreground-st);
+	--color-secondary-st: var(--secondary-st);
+	--color-secondary-foreground-st: var(--secondary-foreground-st);
+	--color-accent-st: var(--accent-st);
+	--color-accent-foreground-st: var(--accent-foreground-st);
+	--color-info-st: var(--info-st);
+	--color-info-foreground-st: var(--info-foreground-st);
+	--color-success-st: var(--success-st);
+	--color-success-foreground-st: var(--success-foreground-st);
+	--color-warning-st: var(--warning-st);
+	--color-warning-foreground-st: var(--warning-foreground-st);
+	--color-destructive-st: var(--destructive-st);
+	--color-destructive-foreground-st: var(--destructive-foreground-st);
+	--color-popover-st: var(--popover-st);
+	--color-popover-foreground-st: var(--popover-foreground-st);
+	--color-card-st: var(--card-st);
+	--color-card-foreground-st: var(--card-foreground-st);
+	--color-border-st: var(--border-st);
+	--color-input-st: var(--input-st);
+	--color-ring-st: var(--ring-st);
+
+	--radius-st: var(--radius-st);
+
 	--color-sidebar: var(--sidebar-background);
 	--color-sidebar-foreground: var(--sidebar-foreground);
 	--color-sidebar-primary: var(--sidebar-primary);
@@ -132,6 +160,27 @@
 		--sidebar-accent-foreground: oklch(10% 0 0);
 		--sidebar-border: oklch(90% 0 0);
 		--sidebar-ring: oklch(80% 0 0);
+
+		--background-st: oklch(94% 0 0);
+		--foreground-st: oklch(10% 0 0);
+		--card-st: oklch(83% 0 0);
+		--card-foreground-st: oklch(10% 0 0);
+		--popover-st: oklch(88% 0 0);
+		--popover-foreground-st: oklch(10% 0 0);
+		--primary-st: oklch(80% 0 0);
+		--primary-foreground-st: oklch(10% 0 0);
+		--secondary-st: oklch(75% 0 0);
+		--secondary-foreground-st: oklch(10% 0 0);
+		--muted-st: oklch(92% 0 0);
+		--muted-foreground-st: oklch(40% 0 0);
+		--accent-st: oklch(80% 0 0);
+		--accent-foreground-st: oklch(10% 0 0);
+		--destructive-st: oklch(75% 0.2 27);
+		--destructive-foreground-st: oklch(10% 0.2 27);
+		--border-st: oklch(36.9% 0 0);
+		--input-st: oklch(90% 0 0);
+		--ring-st: oklch(80% 0 0);
+		--radius-st: 0.5rem;
 	}
 
 	.dark {
@@ -168,6 +217,27 @@
 		--sidebar-accent-foreground: oklch(90% 0 0);
 		--sidebar-border: oklch(40% 0 0);
 		--sidebar-ring: oklch(30% 0 0);
+
+		--background-st: oklch(63.9% 0 0);
+		--foreground-st: oklch(100% 0 0);
+		--card-st: oklch(17% 0 0);
+		--card-foreground-st: oklch(90% 0 0);
+		--popover-st: oklch(20% 0 0);
+		--popover-foreground-st: oklch(90% 0 0);
+		--primary-st: oklch(39.6% 0 0);
+		--primary-foreground-st: oklch(96% 0 0);
+		--secondary-st: oklch(33% 0 0);
+		--secondary-foreground-st: oklch(96% 0 0);
+		--muted-st: oklch(57% 0 0);
+		--muted-foreground-st: oklch(70% 0 0);
+		--accent-st: oklch(40% 0 0);
+		--accent-foreground-st: oklch(96% 0 0);
+		--destructive-st: oklch(40% 0.2 31);
+		--destructive-foreground-st: oklch(98% 0.2 31);
+		--border-st: oklch(40% 0 0);
+		--input-st: oklch(40% 0 0);
+		--ring-st: oklch(30% 0 0);
+		--radius-st: 0.5rem;
 	}
 }
 
@@ -199,6 +269,16 @@
 	background-position:
 		0 0,
 		15px 15px;
+}
+
+.sacred-background-small {
+	background-color: rgb(255, 255, 255);
+	background-image: radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%),
+		radial-gradient(closest-side, var(--bgTexture) 98%, var(--bgTexture1) 99%);
+	background-size: 10px 10px;
+	background-position:
+		0 0,
+		5px 5px;
 }
 
 button {

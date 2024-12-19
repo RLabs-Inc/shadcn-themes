@@ -8,7 +8,7 @@ interface ColorWorkerMessage {
 	mapType: MapType;
 	width: number;
 	height: number;
-	// changedParam?: 'lightness' | 'chroma' | 'hue';
+	changedParam?: 'lightness' | 'chroma' | 'hue';
 }
 
 interface ColorWorkerResponse {
@@ -22,20 +22,20 @@ let currentMessageId = 0;
 let isProcessing = false;
 const messageQueue = new Map<MapType, { id: number; data: ColorWorkerMessage }>();
 
-// function shouldUpdateMap(mapType: MapType, changedParam?: 'lightness' | 'chroma' | 'hue'): boolean {
-//   if (!changedParam) return true;
+function shouldUpdateMap(mapType: MapType, changedParam?: 'lightness' | 'chroma' | 'hue'): boolean {
+	if (!changedParam) return true;
 
-//   switch (mapType) {
-//     case 'lightness-chroma':
-//       return changedParam === 'hue';
-//     case 'hue-chroma':
-//       return changedParam === 'lightness';
-//     case 'hue-lightness':
-//       return changedParam === 'chroma';
-//     default:
-//       return true;
-//   }
-// }
+	switch (mapType) {
+		case 'lightness-chroma':
+			return changedParam === 'hue';
+		case 'hue-chroma':
+			return changedParam === 'lightness';
+		case 'hue-lightness':
+			return changedParam === 'chroma';
+		default:
+			return true;
+	}
+}
 
 async function generateMapColors(
 	type: MapType,
