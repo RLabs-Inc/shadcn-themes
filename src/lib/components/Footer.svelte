@@ -13,7 +13,12 @@
 	<div class="-mt-[0.5rem] flex w-full items-center justify-between gap-1 px-7 py-0 md:justify-end">
 		<!-- <div class="h-4 w-4"></div> -->
 
-		<Button href="https://github.com/RLabs-Inc/rlabs" target="_blank" variant="link" size="icon">
+		<Button
+			href="https://github.com/RLabs-Inc/shadcn-themes"
+			target="_blank"
+			variant="link"
+			size="icon"
+		>
 			<img src="/images/github-mark.svg" alt="GitHub" class="h-5 w-5 dark:invert" />
 			<span class="sr-only">GitHub</span>
 		</Button>
