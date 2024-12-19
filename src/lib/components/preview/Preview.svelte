@@ -15,7 +15,7 @@
 		</TabsList>
 
 		<ScrollArea
-			class="h-[calc(100vh-31rem)] pt-2 sm:h-[calc(100vh-27.2rem)] md:h-[calc(100vh-24rem)] lg:h-[calc(100vh-17.5rem)]"
+			class="h-[calc(100vh-31rem)] py-2 sm:h-[calc(100vh-27.2rem)] md:h-[calc(100vh-24rem)] lg:h-[calc(100vh-17.5rem)]"
 		>
 			<TabsContent value="dashboard"><Dashboard /></TabsContent>
 			<TabsContent value="cards"><Cards /></TabsContent>

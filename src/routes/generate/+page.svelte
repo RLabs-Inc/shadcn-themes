@@ -25,7 +25,7 @@
 				</ScrollAreaSt>
 			</div>
 			<div class="w-full p-5 pt-18 md:pt-15 lg:pt-5">
-				<div class="bg-background w-full rounded-md pt-5 md:px-5 lg:h-[calc(100vh-13.5rem)]">
+				<div class="bg-background w-full rounded-md pt-5 md:px-5">
 					<Preview />
 				</div>
 			</div>

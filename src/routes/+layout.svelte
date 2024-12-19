@@ -8,6 +8,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 
 	import '../app.css';
+	import { Toaster } from 'svelte-sonner';
 
 	let { children } = $props();
 
@@ -17,6 +18,7 @@
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
 	<ModeWatcher />
+	<Toaster />
 	<Header />
 	<main class="min-h-[calc(100vh)]">
 		{@render children()}

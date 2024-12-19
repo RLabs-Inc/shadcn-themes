@@ -21,7 +21,6 @@
 			mode: controlsState().isDarkTheme ? 'dark' : 'light'
 		});
 	};
-	console.log(name);
 </script>
 
 <Popover>

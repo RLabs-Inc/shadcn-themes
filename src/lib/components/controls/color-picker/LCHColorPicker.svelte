@@ -64,7 +64,6 @@
 		]);
 		updateMaps(); // Initial map update
 	});
-	$inspect(selectedColorState().selectedColor);
 </script>
 
 <div class="grid grid-cols-2 place-items-center items-center gap-4">
@@ -87,8 +86,10 @@
 				></div>
 				<div
 					class={clsx(
-						'border-primary-foreground-st absolute inset-0 w-full rounded border transition-colors duration-100',
-						!isLCH_within_sRGB(pickerColor) && 'border-destructive-st border-2'
+						'absolute inset-0 w-full rounded border transition-colors duration-100',
+						!isLCH_within_sRGB(pickerColor)
+							? 'border-destructive-st border-2'
+							: 'border-primary-foreground-st'
 					)}
 					style={`background: ${formatCss(pickerColor)}`}
 				>
@@ -101,29 +102,25 @@
 				</div>
 			</div>
 			<div class=" flex w-full flex-col justify-center gap-1 text-sm">
-				<div class="flex items-center justify-between">
-					<div class="font-mono uppercase">
-						{formatCss(pickerColor)}
-					</div>
-					{#if !isLCH_within_sRGB(pickerColor)}
-						<span
-							transition:fade={{ duration: 100 }}
-							class="bg-destructive-st text-destructive-foreground-st rounded px-1 text-xs"
-							>Color is out of gamut</span
-						>
-					{/if}
-				</div>
 				<div class="flex items-center gap-2">
-					<span class="text-muted-foreground-st text-xs">LCH:</span>
-					<span class="font-mono">
+					<span class="text-muted-foreground-st text-xs">OKLCH:</span>
+					<span class="font-mono text-xs">
 						{pickerColorState().lightness}%,
 						{pickerColorState().chroma},
-						{pickerColorState().hue}°,
+						{pickerColorState().hue}°
 						{#if pickerColorState().alpha[0] !== 100}
 							- {pickerColorState().alpha}%
 						{/if}
 					</span>
 				</div>
+
+				{#if !isLCH_within_sRGB(pickerColor)}
+					<span
+						transition:fade={{ duration: 100 }}
+						class="bg-destructive-st text-destructive-foreground-st rounded px-1 text-center text-xs"
+						>Color is out of gamut</span
+					>
+				{/if}
 			</div>
 		</div>
 		<!-- Alpha Slider -->

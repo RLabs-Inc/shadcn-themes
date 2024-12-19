@@ -14,6 +14,7 @@
 	import { Check } from 'lucide-svelte';
 	import Checkbox from '../ui/checkbox/checkbox.svelte';
 	import { Switch } from '../ui/switch';
+	import Config from './Config.svelte';
 
 	const controlsState = getControlsState();
 	const themeState = getThemeState();
@@ -56,9 +57,12 @@
 					}}
 				>
 					<SelectTrigger
-						class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-full min-w-[150px]"
-						>{controlsState().scheme}</SelectTrigger
+						class="text-foreground-st bg-background-st ring-offset-background-st ring-ring-st focus:ring-ring-st border-input-st w-full max-w-[120px]"
 					>
+						<div class="text-elipsis truncate overflow-hidden">
+							{controlsState().scheme}
+						</div>
+					</SelectTrigger>
 					<SelectContent class="bg-popover-st border-border-st text-popover-foreground-st">
 						{#each Object.values(ColorSchemes) as colorScheme}
 							<SelectItem
@@ -69,8 +73,10 @@
 					</SelectContent>
 				</Select>
 			</div>
-			<div class="flex flex-col gap-4">
-				<Label class="text-primary-foreground-st" for="lessColors">Less colors?</Label>
+			<div class="flex flex-col gap-1">
+				<Label class="text-primary-foreground-st w-[50px] text-wrap" for="lessColors"
+					>Less colors?</Label
+				>
 				<Switch
 					checked={controlsState().lessColors}
 					onCheckedChange={(checked) => {
@@ -82,6 +88,9 @@
 			</div>
 			<div class="self-end">
 				<ThemeModeButton />
+			</div>
+			<div class="self-end">
+				<Config />
 			</div>
 		</div>
 		<div class="flex w-full gap-2 self-end md:w-fit">

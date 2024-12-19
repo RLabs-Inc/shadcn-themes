@@ -1,7 +1,11 @@
-import { type Oklch, oklch } from 'culori';
+import { formatCss, type Oklch, oklch } from 'culori';
 import type { SelectedColor } from '$lib/types/theme';
 
-let selectedColor: SelectedColor | null = $state(null);
+let selectedColor: SelectedColor = $state({
+	name: '',
+	color: formatCss({ mode: 'oklch', l: 0, c: 0, h: 0, alpha: 1 }),
+	mode: 'light'
+});
 
 let lightness: number[] = $state([0]);
 let chroma: number[] = $state([0]);
@@ -19,7 +23,7 @@ const pickerColor: Oklch = $derived.by(() => {
 });
 
 export const getSelectedColorState = () => {
-	function set(color: SelectedColor | null) {
+	function set(color: SelectedColor) {
 		selectedColor = color;
 	}
 
