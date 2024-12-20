@@ -12,7 +12,7 @@
 	} from '$lib/components/preview/tabs/cards';
 </script>
 
-<div class="flex flex-wrap gap-5 px-1 pb-4">
+<div class="flex flex-wrap gap-5">
 	<div class="flex max-w-[400px] flex-col gap-5">
 		<CardsCreateAccount />
 		<div class="hidden md:block">

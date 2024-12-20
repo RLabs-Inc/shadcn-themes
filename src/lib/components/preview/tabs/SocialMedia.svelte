@@ -120,7 +120,7 @@
 	let newPost = $state('');
 </script>
 
-<div class="flex h-full flex-col gap-4 pb-4 lg:flex-row">
+<div class="flex h-full flex-col gap-4 lg:flex-row">
 	<div class="mx-auto w-full max-w-3xl flex-1 space-y-4 sm:px-4">
 		<Card>
 			<CardContent class="pt-4">
@@ -153,7 +153,7 @@
 			</CardContent>
 		</Card>
 
-		<ScrollArea orientation="horizontal" type="scroll" class="w-[calc(100vw-4rem)]">
+		<ScrollArea orientation="horizontal" type="scroll" class="w-[calc(100vw-0.7rem)]">
 			<div class="no-scrollbar flex gap-4 py-2">
 				<div class="flex h-full flex-col items-center gap-2">
 					<Button variant="outline" class="aspect-square h-14 w-14 rounded-full" size="icon">

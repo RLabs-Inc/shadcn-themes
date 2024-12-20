@@ -27,7 +27,7 @@
 
 <section class="text-foreground-st bg-muted-st flex flex-col gap-2 px-5 pt-2">
 	<div class="flex flex-wrap items-center gap-5 sm:flex-row">
-		<div class="flex min-w-[300px] flex-1 flex-col gap-4">
+		<div class="flex min-w-[250px] flex-1 flex-col gap-4">
 			<Label class="text-primary-foreground-st" for="baseHue"
 				>Base Hue: {controlsState().baseHue[0]}</Label
 			>

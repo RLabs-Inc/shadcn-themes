@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Tabs, TabsContent, TabsList, TabsTrigger } from '$lib/components/ui/tabs';
-	import { ScrollArea } from '$lib/components/ui/scroll-area';
 	import Dashboard from './tabs/Dashboard.svelte';
 	import Cards from './tabs/Cards.svelte';
 	import SocialMedia from './tabs/SocialMedia.svelte';
@@ -14,10 +13,8 @@
 			<TabsTrigger value="social-media">Social Media</TabsTrigger>
 		</TabsList>
 
-		<ScrollArea class="h-[calc(100vh-18.5rem)] pt-1">
-			<TabsContent value="dashboard"><Dashboard /></TabsContent>
-			<TabsContent value="cards"><Cards /></TabsContent>
-			<TabsContent value="social-media"><SocialMedia /></TabsContent>
-		</ScrollArea>
+		<TabsContent value="dashboard"><Dashboard /></TabsContent>
+		<TabsContent value="cards"><Cards /></TabsContent>
+		<TabsContent value="social-media"><SocialMedia /></TabsContent>
 	</Tabs>
 </section>
