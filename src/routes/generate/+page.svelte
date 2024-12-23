@@ -6,6 +6,14 @@
 	import PreviewMobile from '$lib/components/preview/PreviewMobile.svelte';
 </script>
 
+<svelte:head>
+	<title>Shadcn UI Theme Generator</title>
+	<meta
+		name="description"
+		content="A svelte 5 app that uses an innovative algorithm that combines sacred geometry patterns and and modern mathematics with traditional color theory to create unique themes for your next shadcn ui project. Export your generated theme or simply copy and paste it into your shadcn ui config file. Either your stack is reactjs with nextjs or svelte 5 with svelte-kit, the configuration file is framework agnostic. Copy or export your theme configuration using tailwind v3 and/or the new css only tailwind v4 format. All colors are generated and exported in the OKLCH colorspace. The algorithm is open source and can be found on github."
+	/>
+</svelte:head>
+
 <section class="sacred-background-small flex flex-col gap-2 lg:h-[calc(100vh)]">
 	<div class="pt-14 backdrop-blur-xl lg:sticky lg:top-14 lg:z-50 lg:pt-0">
 		<Controls />
