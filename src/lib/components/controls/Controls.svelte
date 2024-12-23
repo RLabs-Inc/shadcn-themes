@@ -11,8 +11,6 @@
 	import ThemeModeButton from '$lib/components/ThemeModeButton.svelte';
 
 	import { ColorSchemes } from '$lib/types/sacred-geometry-schemes';
-	import { Check } from 'lucide-svelte';
-	import Checkbox from '../ui/checkbox/checkbox.svelte';
 	import { Switch } from '../ui/switch';
 	import Config from './Config.svelte';
 
@@ -43,6 +41,7 @@
 				}}
 				bgColor={baseHueGradient}
 				class="border-primary-st"
+				data-umami-event="Change base hue"
 			/>
 		</div>
 		<div class="flex flex-row flex-wrap gap-5">
@@ -67,7 +66,8 @@
 						{#each Object.values(ColorSchemes) as colorScheme}
 							<SelectItem
 								class="data-highlighted:bg-accent-st data-highlighted:text-accent-foreground-st  capitalize"
-								value={colorScheme}>{colorScheme}</SelectItem
+								value={colorScheme}
+								data-umami-event={`Change color scheme ${colorScheme}`}>{colorScheme}</SelectItem
 							>
 						{/each}
 					</SelectContent>
@@ -84,6 +84,7 @@
 					}}
 					class="text-primary-foreground-st bg-primary-st data-[state=checked]:bg-primary-st data-[state=unchecked]:bg-input-st"
 					classNameThumb="bg-background-st"
+					data-umami-event="Change less colors"
 				/>
 			</div>
 			<div class="self-end">
@@ -97,11 +98,13 @@
 			<Button
 				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st  w-full md:w-fit"
 				onclick={() => themeState().regenerate()}
+				data-umami-event="Regenerate colors"
 				>Regenerate {controlsState().isDarkTheme ? 'dark' : 'light'} colors</Button
 			>
 			<Button
 				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st w-full md:w-fit"
-				onclick={() => controlsState().randomize()}>Randomize</Button
+				onclick={() => controlsState().randomize()}
+				data-umami-event="Randomize colors">Randomize</Button
 			>
 		</div>
 	</div>

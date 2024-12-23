@@ -37,6 +37,7 @@
 					handleClick();
 				}
 			}}
+			data-umami-event={`Select color ${name}`}
 		></div>
 	</PopoverTrigger>
 

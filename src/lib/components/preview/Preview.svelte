@@ -9,15 +9,19 @@
 <section class="">
 	<Tabs value="dashboard">
 		<TabsList>
-			<TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-			<TabsTrigger value="cards">Cards</TabsTrigger>
-			<TabsTrigger value="social-media">Social Media</TabsTrigger>
+			<TabsTrigger data-umami-event="Tab Dashboard" value="dashboard">Dashboard</TabsTrigger>
+			<TabsTrigger data-umami-event="Tab Cards" value="cards">Cards</TabsTrigger>
+			<TabsTrigger data-umami-event="Tab Social Media" value="social-media"
+				>Social Media</TabsTrigger
+			>
 		</TabsList>
 
 		<ScrollArea class="h-[calc(100vh-18.5rem)] pt-1">
-			<TabsContent value="dashboard"><Dashboard /></TabsContent>
-			<TabsContent value="cards"><Cards /></TabsContent>
-			<TabsContent value="social-media"><SocialMedia /></TabsContent>
+			<TabsContent data-umami-event="Tab Dashboard" value="dashboard"><Dashboard /></TabsContent>
+			<TabsContent data-umami-event="Tab Cards" value="cards"><Cards /></TabsContent>
+			<TabsContent data-umami-event="Tab Social Media" value="social-media"
+				><SocialMedia /></TabsContent
+			>
 		</ScrollArea>
 	</Tabs>
 </section>

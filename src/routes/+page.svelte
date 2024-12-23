@@ -37,6 +37,7 @@
 	</div>
 	<a
 		class="border-primary bg-accent text-accent-foreground w-fit self-center rounded-md border p-2 font-bold underline shadow-md transition-all hover:scale-110 hover:shadow-xl"
-		href="/generate">Generate your theme now!</a
+		href="/generate"
+		data-umami-event="Go to generate page">Generate your theme now!</a
 	>
 </section>
