@@ -9,11 +9,13 @@
 
 	import '../app.css';
 	import { Toaster } from 'svelte-sonner';
+	import { Lit } from 'litlyx-js';
 
 	let { children } = $props();
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 	injectSpeedInsights();
+	Lit.init('676c080d1e8c591fe2160fb3');
 </script>
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">

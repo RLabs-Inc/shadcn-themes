@@ -10,6 +10,7 @@
 	import { toast } from 'svelte-sonner';
 
 	import { getThemeState } from '$lib/state/theme.svelte';
+	import { Lit } from 'litlyx-js';
 
 	let isOpen = $state(false);
 
@@ -32,6 +33,7 @@
 		if (open) {
 			navigator.clipboard.writeText(cssConfig);
 			toast.success('Copied to clipboard');
+			Lit.event('Copied config');
 		}
 	};
 </script>

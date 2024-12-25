@@ -13,6 +13,7 @@
 	import { ColorSchemes } from '$lib/types/sacred-geometry-schemes';
 	import { Switch } from '../ui/switch';
 	import Config from './Config.svelte';
+	import { Lit } from 'litlyx-js';
 
 	const controlsState = getControlsState();
 	const themeState = getThemeState();
@@ -38,6 +39,7 @@
 				onValueCommit={(value) => {
 					controlsState().setBaseHue(value);
 					themeState().generate();
+					Lit.event('Base hue change');
 				}}
 				bgColor={baseHueGradient}
 				class="border-primary-st"
@@ -53,6 +55,7 @@
 					onValueChange={(value) => {
 						controlsState().setScheme(value as ColorSchemes);
 						themeState().generate();
+						Lit.event('Color scheme changed ' + value);
 					}}
 				>
 					<SelectTrigger
@@ -81,6 +84,7 @@
 					checked={controlsState().lessColors}
 					onCheckedChange={(checked) => {
 						controlsState().setLessColors(checked);
+						Lit.event('Less colors ' + checked);
 					}}
 					class="text-primary-foreground-st bg-primary-st data-[state=checked]:bg-primary-st data-[state=unchecked]:bg-input-st"
 					classNameThumb="bg-background-st"
@@ -97,13 +101,19 @@
 		<div class="flex w-full gap-2 self-end md:w-fit">
 			<Button
 				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st  w-full md:w-fit"
-				onclick={() => themeState().regenerate()}
+				onclick={() => {
+					themeState().regenerate();
+					Lit.event('Regenerate');
+				}}
 				data-umami-event="Regenerate colors"
 				>Regenerate {controlsState().isDarkTheme ? 'dark' : 'light'} colors</Button
 			>
 			<Button
 				class="text-primary-foreground-st hover:text-secondary-foreground-st hover:bg-secondary-st bg-primary-st w-full md:w-fit"
-				onclick={() => controlsState().randomize()}
+				onclick={() => {
+					controlsState().randomize();
+					Lit.event('Randomize');
+				}}
 				data-umami-event="Randomize colors">Randomize</Button
 			>
 		</div>
