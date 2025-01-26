@@ -64,6 +64,7 @@
 		]);
 		updateMaps(); // Initial map update
 	});
+	$inspect(bgLightness);
 </script>
 
 <div class="grid grid-cols-1 place-items-center items-center gap-4 lg:grid-cols-2">

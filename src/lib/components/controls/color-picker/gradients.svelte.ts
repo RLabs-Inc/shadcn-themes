@@ -1,7 +1,6 @@
 import { type Oklch, clampChroma, formatCss } from 'culori';
 import { LIGHTNESS_STOPS, CHROMA_STOPS, HUE_STOPS, ALPHA_STOPS } from './constants';
 import { isLCH_within_sRGB } from './gamut-utils.svelte';
-import { is } from 'drizzle-orm';
 
 export function slider_stops(
 	range: number[],
