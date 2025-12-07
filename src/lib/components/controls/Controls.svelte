@@ -19,9 +19,10 @@
 	const themeState = getThemeState();
 
 	const baseHueGradient = `linear-gradient(
-    	to right in oklch longer hue,
-    	oklch(70% .3 0) 100% 0%
-  	)`;
+                            to right in oklch longer hue,
+                            oklch(70% .3 0) 0%,
+                            oklch(70% .3 360) 100%
+                          )`;
 </script>
 
 <section class="text-foreground-st bg-muted-st flex flex-col gap-2 px-5 pt-2">
